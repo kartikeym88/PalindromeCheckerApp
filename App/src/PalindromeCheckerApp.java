@@ -3,16 +3,24 @@
 //useCase 1: Welcome page
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        SString original = "madam";
+        String original = "radar";
+        String reversed = "";
 
-        // Reverse the string using StringBuilder
-        String reversed = new StringBuilder(original).reverse().toString();
+        // Step 2: Use a for loop to reverse the string
+        // We start from the last index (length - 1) and move to index 0
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i); // String concatenation
+        }
 
-        // Check if the original equals the reversed version
+        // Step 3: Compare content using .equals()
         if (original.equals(reversed)) {
             System.out.println("The string '" + original + "' is a palindrome.");
         } else {
             System.out.println("The string '" + original + "' is not a palindrome.");
         }
+
+        // Output the reversed result for clarity
+        System.out.println("Original: " + original);
+        System.out.println("Reversed: " + reversed);
     }
 }
