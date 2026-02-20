@@ -3,11 +3,16 @@
 //useCase 1: Welcome page
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        System.out.println("     Welcome to Palindrome Checker App");
-        System.out.println("Application Name : Palindrome Checker App");
-        System.out.println("Version          : 1.0");
-        System.out.println("This application checks whether a given");
-        System.out.println("string is a palindrome.");
-        System.out.println("Application Started Successfully!");
+        SString original = "madam";
+
+        // Reverse the string using StringBuilder
+        String reversed = new StringBuilder(original).reverse().toString();
+
+        // Check if the original equals the reversed version
+        if (original.equals(reversed)) {
+            System.out.println("The string '" + original + "' is a palindrome.");
+        } else {
+            System.out.println("The string '" + original + "' is not a palindrome.");
+        }
     }
 }
