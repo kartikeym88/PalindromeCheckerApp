@@ -3,24 +3,32 @@
 //useCase 1: Welcome page
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String original = "radar";
-        String reversed = "";
+        // Step 1: Define the input string
+        String original = "level";
 
-        // Step 2: Use a for loop to reverse the string
-        // We start from the last index (length - 1) and move to index 0
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i); // String concatenation
+        // Step 2: Convert String to Character Array
+        char[] charArray = original.toCharArray();
+
+        // Step 3: Initialize Two Pointers
+        int left = 0;
+        int right = charArray.length - 1;
+        boolean isPalindrome = true;
+
+        // Step 4: Compare characters from both ends
+        while (left < right) {
+            if (charArray[left] != charArray[right]) {
+                isPalindrome = false;
+                break; // Exit early if a mismatch is found
+            }
+            left++;  // Move forward
+            right--; // Move backward
         }
 
-        // Step 3: Compare content using .equals()
-        if (original.equals(reversed)) {
+        // Step 5: Output the result
+        if (isPalindrome) {
             System.out.println("The string '" + original + "' is a palindrome.");
         } else {
             System.out.println("The string '" + original + "' is not a palindrome.");
         }
-
-        // Output the reversed result for clarity
-        System.out.println("Original: " + original);
-        System.out.println("Reversed: " + reversed);
     }
 }
