@@ -1,14 +1,21 @@
 import java.util.Scanner;
 
-public class PalindromeCheckerApp {
+// Service class (Encapsulation)
+class PalindromeCheckerApp {
 
-    // Normalize string (ignore spaces, punctuation, case)
-    public static String normalize(String input) {
+    // Public API method
+    public boolean checkPalindrome(String input) {
+        String normalized = normalize(input);
+        return isPalindrome(normalized);
+    }
+
+    // Internal preprocessing
+    private String normalize(String input) {
         return input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
     }
 
-    // Two-pointer palindrome check
-    public static boolean isPalindrome(String str) {
+    // Internal logic
+    private boolean isPalindrome(String str) {
         int left = 0;
         int right = str.length() - 1;
 
@@ -21,17 +28,19 @@ public class PalindromeCheckerApp {
         }
         return true;
     }
+}
+
+public class UseCase11PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        PalindromeChecker checker = new PalindromeChecker();
 
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        String normalized = normalize(input);
-
-        if (isPalindrome(normalized)) {
+        if (checker.checkPalindrome(input)) {
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
