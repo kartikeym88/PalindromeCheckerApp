@@ -1,42 +1,96 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    public static boolean isPalindrome(String input) {
+    static class Node {
+        char data;
+        Node next;
 
-        // Normalize (optional but realistic)
-        input = input.replaceAll("\\s+", "").toLowerCase();
-
-        Deque<Character> deque = new ArrayDeque<>();
-
-        // Insert characters
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
+        Node(char data) {
+            this.data = data;
+            this.next = null;
         }
+    }
 
-        // Compare front and rear
-        while (deque.size() > 1) {
-            char front = deque.removeFirst();
-            char rear = deque.removeLast();
+    // Build linked list from string
+    public static Node buildList(String input) {
+        Node head = null, tail = null;
 
-            if (front != rear) {
-                return false;
+        for (char c : input.toCharArray()) {
+            Node newNode = new Node(c);
+
+            if (head == null) {
+                head = tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
             }
         }
+        return head;
+    }
 
-        return true;
+    // Reverse linked list
+    public static Node reverse(Node head) {
+        Node prev = null;
+        Node curr = head;
+
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+    // Palindrome check
+    public static boolean isPalindrome(Node head) {
+        if (head == null || head.next == null) return true;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Find middle
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reverse second half
+        Node secondHalf = reverse(slow.next);
+
+        Node p1 = head;
+        Node p2 = secondHalf;
+
+        boolean result = true;
+
+        // Compare halves
+        while (p2 != null) {
+            if (p1.data != p2.data) {
+                result = false;
+                break;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        // Restore list (good practice)
+        slow.next = reverse(secondHalf);
+
+        return result;
     }
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter a string: ");
-        String input = sc.nextLine();
+        String input = sc.nextLine()
+                .replaceAll("\\s+", "")
+                .toLowerCase();
 
-        if (isPalindrome(input)) {
+        Node head = buildList(input);
+
+        if (isPalindrome(head)) {
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");

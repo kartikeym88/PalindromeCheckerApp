@@ -1,48 +1,42 @@
-# UseCase7 — Deque-Based Optimized Palindrome Checker (Java)
+# UseCase8 — Linked List Based Palindrome Checker (Java)
 
 ## Overview
 
-The PalindromeChecker App (UC7) is a console-based Java application that determines whether a given string is a palindrome using a Deque (Double Ended Queue) data structure.
+The PalindromeChecker App (UC8) is a console-based Java application that checks whether a given string is a palindrome using a Singly Linked List.
 
-Instead of reversing the string or using index pointers, the program inserts characters into a deque and compares elements from the front and rear simultaneously until all characters are validated.
+The application converts the input string into a linked list, finds the middle of the list using the fast and slow pointer technique, reverses the second half in place, and compares both halves to determine whether the string is a palindrome.
 
-This use case focuses on strengthening data structure understanding, particularly deque operations.
+This use case focuses on pointer manipulation, linked list traversal, and in-place algorithm design.
 
 ---
 
 ## Objective
 
-* Validate whether a string is a palindrome.
-* Demonstrate deque usage for front and rear comparison.
-* Practice Java collections and core programming concepts.
+* Validate whether a string is a palindrome using a linked list.
+* Demonstrate singly linked list creation and traversal.
+* Apply fast and slow pointer technique to find the middle.
+* Perform in-place reversal of the second half without extra memory.
 
 ---
 
 ## Key Concepts Used
 
-* Deque (Double Ended Queue) — Allows insertion and deletion from both ends.
-* Front and Rear Access — Enables direct comparison of first and last characters.
-* Input Handling — Accepting user input using Scanner.
-* String Normalization — Ignoring case and spaces for flexible validation.
+* Singly Linked List — Dynamic structure where nodes are connected using references.
+* Node Traversal — Sequential access using next pointers.
+* Fast and Slow Pointer Technique — Efficient middle detection in O(n).
+* In-Place Reversal — Reversing part of the list without additional data structures.
+* Comparison of List Halves — Validating palindrome property.
 
 ---
 
 ## Algorithm / Flow
 
-1. Accept input string from user.
-2. Normalize input (remove spaces, convert to lowercase).
-3. Insert each character into a deque.
-4. Repeat until deque size > 1:
-
-    * Remove first and last characters.
-    * Compare them.
-5. If mismatch occurs → Not palindrome.
-6. If all comparisons match → Palindrome.
-
----
-
-## File Name
-
-
-PalindromeCheckerApp.java
+1. Accept input string from the user.
+2. Normalize input (remove spaces and convert to lowercase).
+3. Convert the string into a singly linked list.
+4. Use fast and slow pointers to locate the middle node.
+5. Reverse the second half of the linked list.
+6. Compare the first half and reversed second half node by node.
+7. If all nodes match → Palindrome.
+8. Restore the list (optional good practice).
 
