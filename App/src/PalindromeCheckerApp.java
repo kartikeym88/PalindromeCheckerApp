@@ -1,39 +1,47 @@
-// version 1.0
-//author Kartikey
-//useCase 1: Welcome page
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        tring original = "racecar";
 
-        // Step 1: Initialize Stack (LIFO) and Queue (FIFO)
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+    public static boolean isPalindrome(String input) {
 
-        // Step 2: Fill both structures
-        for (int i = 0; i < original.length(); i++) {
-            char ch = original.charAt(i);
-            stack.push(ch);
-            queue.add(ch);
+        // Normalize (optional but realistic)
+        input = input.replaceAll("\\s+", "").toLowerCase();
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        // Insert characters
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
 
-        // Step 3: Compare Dequeue (Front) vs Pop (Back)
-        boolean isPalindrome = true;
-        while (!stack.isEmpty()) {
-            // Queue.remove() gets the FIRST char, Stack.pop() gets the LAST char
-            if (!stack.pop().equals(queue.remove())) {
-                isPalindrome = false;
-                break;
+        // Compare front and rear
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                return false;
             }
         }
 
-        // Step 4: Output result
-        if (isPalindrome) {
-            System.out.println("The string '" + original + "' is a palindrome.");
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        if (isPalindrome(input)) {
+            System.out.println("Palindrome");
         } else {
-            System.out.println("The string '" + original + "' is not a palindrome.");
+            System.out.println("Not Palindrome");
         }
+
+        sc.close();
     }
 }
