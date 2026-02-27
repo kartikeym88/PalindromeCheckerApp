@@ -1,41 +1,45 @@
-# UseCase12 — Strategy Pattern for Palindrome Algorithms (Java)
+# UseCase13 — Performance Comparison of Palindrome Algorithms (Java)
 
 ## Overview
 
-The PalindromeChecker App (UC12) is a console-based Java application that validates whether a given string is a palindrome using the Strategy Design Pattern.
+The PalindromeChecker App (UC13) is a console-based Java application that compares the performance of multiple palindrome checking approaches.
 
-Instead of using a single fixed algorithm, the application allows selecting different palindrome checking strategies at runtime. Each strategy implements a common interface while using its own internal data structure and logic.
+The application executes different algorithms on the same normalized input, measures their execution time using `System.nanoTime()`, and displays the results for comparison.
 
-This use case demonstrates flexible design, extensibility, and runtime behavior selection.
+This use case focuses on understanding algorithm efficiency and basic benchmarking techniques.
 
 ---
 
 ## Objective
 
-* Choose a palindrome algorithm dynamically at runtime.
-* Apply the Strategy Design Pattern.
-* Demonstrate polymorphism using interfaces.
-* Separate algorithm implementations from the main application.
+* Compare different palindrome checking approaches.
+* Measure execution time using `System.nanoTime()`.
+* Observe differences between algorithm implementations.
+* Understand basic performance benchmarking concepts.
 
 ---
 
 ## Key Concepts Used
 
-* Interface — Defines a common contract for palindrome strategies.
-* Polymorphism — Different implementations behave through the same interface.
-* Strategy Pattern — Enables dynamic selection of algorithms.
-* Dependency Injection — Strategy provided to the service at runtime.
-* Data Structure Variation — Stack, Deque, or other structures per strategy.
+* Algorithm Comparison — Running multiple implementations on the same input.
+* System.nanoTime() — High-resolution timing for execution measurement.
+* Benchmarking Basics — Measuring relative performance.
+* Normalization — Ensuring fair comparison using identical input.
+* Multiple Algorithm Approaches — Two-pointer, Stack, Deque, and Recursive.
 
 ---
 
 ## Algorithm / Flow
 
 1. Accept input string from the user.
-2. Ask the user to choose a palindrome strategy.
-3. Create a strategy implementation (Stack or Deque).
-4. Inject the selected strategy into the service class.
-5. Service delegates palindrome checking to the chosen strategy.
-6. Display the result.
+2. Normalize the string (remove special characters and convert to lowercase).
+3. Execute each palindrome algorithm:
 
+    * Two-pointer approach
+    * Stack-based approach
+    * Deque-based approach
+    * Recursive approach
+4. Capture execution time before and after each algorithm.
+5. Calculate elapsed time.
+6. Display results and comparison.
 
