@@ -1,40 +1,43 @@
-# UseCase10 — Case-Insensitive & Space-Ignored Palindrome Checker (Java)
+# UseCase11 — Object-Oriented Palindrome Service (Java)
 
 ## Overview
 
-The PalindromeChecker App (UC10) is a console-based Java application that checks whether a given string is a palindrome while ignoring differences in letter case, spaces, and special characters.
+The PalindromeChecker App (UC11) is a console-based Java application that validates whether a given string is a palindrome using an object-oriented design approach.
 
-The application first normalizes the input string through preprocessing and then applies a standard palindrome checking algorithm. This use case highlights the importance of input cleaning before algorithm execution.
+In this use case, the palindrome logic is encapsulated inside a dedicated service class. The application exposes a public method that performs preprocessing and palindrome validation while hiding internal implementation details.
+
+This use case emphasizes clean architecture, modularity, and reusability.
 
 ---
 
 ## Objective
 
-* Validate whether a string is a palindrome regardless of case and spacing.
-* Demonstrate string preprocessing techniques.
-* Apply regular expressions for input normalization.
-* Reuse existing palindrome checking logic after preprocessing.
+* Encapsulate palindrome logic inside a class.
+* Provide a reusable method to check palindromes.
+* Apply object-oriented design principles.
+* Separate user interface logic from business logic.
 
 ---
 
-## Key Concepts Used
+## Key Concepts Used (OOPS)
 
-* String Preprocessing — Cleaning input before processing.
-* Regular Expressions — Removing spaces and non-alphanumeric characters.
-* Case Normalization — Converting text to lowercase.
-* Two-Pointer Technique — Efficient palindrome validation.
-* String / Array Handling — Character comparison operations.
+* Encapsulation — Internal logic is hidden inside the class.
+* Single Responsibility Principle — The service class handles only palindrome validation.
+* Abstraction — Users interact through a public method without knowing implementation details.
+* Method Design — Public API with private helper methods.
+* Internal Data Handling — Uses String / Array processing internally.
 
 ---
 
 ## Algorithm / Flow
 
 1. Accept input string from the user.
-2. Normalize the string:
+2. Create an instance of the PalindromeChecker class.
+3. Call the public checkPalindrome() method.
+4. Inside the service:
 
-   * Remove spaces and special characters.
-   * Convert all characters to lowercase.
-3. Apply palindrome check using two-pointer comparison.
-4. If all corresponding characters match → Palindrome.
-5. Otherwise → Not palindrome.
+   * Normalize input (remove special characters and convert to lowercase).
+   * Apply two-pointer palindrome comparison.
+5. Return result to the main application.
+6. Display whether the string is a palindrome.
 
