@@ -1,43 +1,41 @@
-# UseCase11 — Object-Oriented Palindrome Service (Java)
+# UseCase12 — Strategy Pattern for Palindrome Algorithms (Java)
 
 ## Overview
 
-The PalindromeChecker App (UC11) is a console-based Java application that validates whether a given string is a palindrome using an object-oriented design approach.
+The PalindromeChecker App (UC12) is a console-based Java application that validates whether a given string is a palindrome using the Strategy Design Pattern.
 
-In this use case, the palindrome logic is encapsulated inside a dedicated service class. The application exposes a public method that performs preprocessing and palindrome validation while hiding internal implementation details.
+Instead of using a single fixed algorithm, the application allows selecting different palindrome checking strategies at runtime. Each strategy implements a common interface while using its own internal data structure and logic.
 
-This use case emphasizes clean architecture, modularity, and reusability.
+This use case demonstrates flexible design, extensibility, and runtime behavior selection.
 
 ---
 
 ## Objective
 
-* Encapsulate palindrome logic inside a class.
-* Provide a reusable method to check palindromes.
-* Apply object-oriented design principles.
-* Separate user interface logic from business logic.
+* Choose a palindrome algorithm dynamically at runtime.
+* Apply the Strategy Design Pattern.
+* Demonstrate polymorphism using interfaces.
+* Separate algorithm implementations from the main application.
 
 ---
 
-## Key Concepts Used (OOPS)
+## Key Concepts Used
 
-* Encapsulation — Internal logic is hidden inside the class.
-* Single Responsibility Principle — The service class handles only palindrome validation.
-* Abstraction — Users interact through a public method without knowing implementation details.
-* Method Design — Public API with private helper methods.
-* Internal Data Handling — Uses String / Array processing internally.
+* Interface — Defines a common contract for palindrome strategies.
+* Polymorphism — Different implementations behave through the same interface.
+* Strategy Pattern — Enables dynamic selection of algorithms.
+* Dependency Injection — Strategy provided to the service at runtime.
+* Data Structure Variation — Stack, Deque, or other structures per strategy.
 
 ---
 
 ## Algorithm / Flow
 
 1. Accept input string from the user.
-2. Create an instance of the PalindromeChecker class.
-3. Call the public checkPalindrome() method.
-4. Inside the service:
+2. Ask the user to choose a palindrome strategy.
+3. Create a strategy implementation (Stack or Deque).
+4. Inject the selected strategy into the service class.
+5. Service delegates palindrome checking to the chosen strategy.
+6. Display the result.
 
-   * Normalize input (remove special characters and convert to lowercase).
-   * Apply two-pointer palindrome comparison.
-5. Return result to the main application.
-6. Display whether the string is a palindrome.
 
